@@ -1,0 +1,46 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ formTitle }}</h4>
+  </div>
+  <form [formGroup]="form" (submit)="submit()">
+      <div class="modal-body">
+          <div class="mb-3">
+              <label for="ipAddress">IP Address: <span class="text-danger">*</span></label>
+              <input id="ipAddress" formControlName="ip_address"  [ngModel]="selected_ip_address" class="form-control" placeholder="xxx.xxx.xxx.xxx" required>
+              <div class="invalalid feedback" *ngIf="ipAddress.value != '' && ipAddress.errors && ipAddress.errors['ipError']">
+                  <span class="text-danger">Invalid IP Address</span>
+              </div>
+          </div>
+
+          <div class="mb-3">
+              <label for="label">Label/Comments:</label>
+              <div class="input-group">
+                  <input id="label" #label class="form-control" placeholder="" required>
+                  <button type="button" class="btn btn-primary" (click)="addLabel(label.value)"><i class="fa fa-plus"></i> Add</button>
+              </div>
+
+              <div class="m-2">
+                  <br>
+                  <table class="table" *ngIf="labels && labels.length">
+                    <thead>
+                        <th>Label</th>  
+                        <th>Option</th>  
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let label of labels">
+                            <td>
+                                <input type="text" value="{{ label }}" #labelLatest style="border: none;">
+                            </td>
+                            <td class="btn-group">
+                                <button type="button" class="btn btn-outline-secondary" (click)="updateLabel(label, labelLatest.value)"><i class="fa fa-edit"></i></button>
+                                <button type="button" class="btn btn-outline-danger" (click)="removeLabel(label)"><i class="fa fa-minus"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+          <button type="submit" class="btn btn-outline-primary" *ngIf="!selected_id">Submit</button>
+      </div>
+  </form>

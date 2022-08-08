@@ -1,0 +1,17 @@
+<h4>Audit Logs</h4>
+<div>
+    <table class="table table-striped">
+        <thead>
+            <th>Time</th>
+            <th>User</th>
+            <th>Action</th>
+        </thead>
+        <tbody *ngIf="audit_logs">
+            <tr *ngFor="let audit_log of audit_logs.data">
+                <td>{{ audit_log.created_at }}</td>
+                <td>{{ audit_log.user.email }}</td>
+                <td>{{ audit_log.action }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
