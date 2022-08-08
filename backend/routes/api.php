@@ -7,3 +7,4 @@ use App\Http\Controllers\UserController;
 
 Route::get('/users',[UserController::class, 'index']);
 Route::post('/users',[UserController::class, 'store']);
+Route::get('/user',[UserController::class, 'show'])->middleware('auth:api');
