@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\IpAddressController;
+use App\Http\Controllers\AuditLogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,6 @@ Route::get('/ip-addresses', [IpAddressController::class, 'index']);
 Route::post('/ip-address', [IpAddressController::class, 'store']);
 Route::get('/ip-address/{id}', [IpAddressController::class, 'show']);
 Route::put('/ip-address', [IpAddressController::class, 'update']);
+
+Route::get('/audit-logs', [AuditLogController::class, 'index']);
+Route::post('/audit-logs', [AuditLogController::class, 'store']);

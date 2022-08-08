@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IpAddressService } from 'src/app/services/ip-address.service';
 import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AuditLogService } from 'src/app/services/audit-log.service';
 
 @Component({
   selector: 'app-modal',
@@ -27,6 +28,7 @@ export class ModalComponent implements OnInit {
     private ipAddressService: IpAddressService,
     private router: Router,
     private fb: FormBuilder,
+    private auditLogService: AuditLogService
   ) { }
 
   ngOnInit(): void {
@@ -82,6 +84,8 @@ export class ModalComponent implements OnInit {
       this.ipAddressService.submit(data).subscribe(
         (res) => {
           this.passBack('success', res);
+
+          this.logActivity('Added new IP address: ' +data.ip_address+ ' with a comment/label: ' + (data.labels.length ? data.labels : null));
         },
         (err) => {
           this.passBack('danger', err.error.message);
@@ -103,12 +107,34 @@ export class ModalComponent implements OnInit {
     this.ipAddressService.update(data).subscribe(
       (res) => {
         this.passBack('success', res);
+
+        this.logActivity('Changed label of IP address: (' +data.ip_address+ ') to a label: ' + data.labels);
       },
       (err) => {
         this.passBack('danger', err.error.message);
 
         console.log(err);
       })
+  }
+
+  logActivity(action: String){
+    if(localStorage.getItem('user_id')){
+      const log = {
+        'user_id': localStorage.getItem('user_id'),
+        'action': action
+      }
+  
+      this.auditLogService.submit(log).subscribe(
+        (res) => {
+          console.log(res);
+        },
+        (err) => {
+          console.log(err);
+        }
+      )
+    }else{
+      this.router.navigateByUrl('/login');
+    }
   }
 
   addLabel(label: String){

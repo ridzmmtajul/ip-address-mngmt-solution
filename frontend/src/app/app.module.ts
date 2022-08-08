@@ -10,6 +10,7 @@ import { IpAddressComponent } from './components/ip-address/ip-address.component
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalComponent } from './components/ip-address/modal/modal.component';
+import { AuditLogComponent } from './components/audit-log/audit-log.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ModalComponent } from './components/ip-address/modal/modal.component';
     HomeComponent,
     IpAddressComponent,
     ModalComponent,
+    AuditLogComponent,
   ],
   imports: [
     BrowserModule,

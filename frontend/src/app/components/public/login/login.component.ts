@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http'
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { AuditLogService } from 'src/app/services/audit-log.service';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +19,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder, 
     private authService: AuthService,
     private router: Router,
+    private auditLogService: AuditLogService
   ) { 
     this.form = FormGroup
   }
@@ -35,7 +38,7 @@ export class LoginComponent implements OnInit {
       password: formData.password,
       grant_type: 'password',
       client_id: 2,
-      client_secret: 'qvqfY0knPXBl61liNcvu0GozxT4RkXIGTBAVWZa6'
+      client_secret: 'FTxJjOMRoQlxXexdNGCcr07neEoz5b89AgVzvbZ4'
     };
 
     this.authService.login(data).subscribe(
