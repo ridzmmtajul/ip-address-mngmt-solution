@@ -34,6 +34,14 @@ A web-based IP address management solution that allow us to record an IP address
   DB_PASSWORD= <br/>
   
 - Run `php artisan migrate` (this will generate the database table)
+- Run command `php artisan passport:install`
+- Copy access client inside .env file. example:
+
+  CLIENT_1=<your_client_secret1_here> <br />
+  CLIENT_2=<your_client_secret2_here> <br />
+
+- Open login.component.ts file
+- Copy and paste client_secret inside submit() function
 
 #### Running the Application
 - Open XAMPP
