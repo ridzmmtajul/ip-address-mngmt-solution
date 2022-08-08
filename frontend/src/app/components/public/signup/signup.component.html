@@ -1,0 +1,37 @@
+<form [formGroup]="form" (submit)="submit()">
+    <br>
+    <h1 class="h3 mb-3 fw-normal"><b>Sign-up</b></h1>
+    
+    <div class="bg-danger p-2 text-bg-dark mb-2" *ngIf="errors">
+        {{ errors }}
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="text" id="first_name" formControlName="first_name" class="form-control" placeholder="First Name">
+        <label for="first_name">First Name</label> 
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="text" id="last_name" formControlName="last_name" class="form-control" placeholder="Last Name">
+        <label for="last_name">Last Name</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="email" id="email" formControlName="email" class="form-control" placeholder="example@gmail.com">
+        <label for="email">Email</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password">
+        <label for="password">Password</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="password" id="password_confirmation" formControlName="password_confirmation" class="form-control" placeholder="Password Confirmation">
+        <label for="password_confirmation">Password Confirmation</label>
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
