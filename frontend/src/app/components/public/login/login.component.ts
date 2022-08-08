@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       password: formData.password,
       grant_type: 'password',
       client_id: 2,
-      client_secret: 'KZhhAo7JxFzeMETBAqOWdiu7fLMslGNrfQpQlNqY'
+      client_secret: 'qvqfY0knPXBl61liNcvu0GozxT4RkXIGTBAVWZa6'
     };
 
     this.authService.login(data).subscribe(

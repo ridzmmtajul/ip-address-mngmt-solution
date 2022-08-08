@@ -1,0 +1,34 @@
+<div class="mt-5">
+    <div class="row">
+        <h4 class="col-md-5">List of IP Addresses</h4>
+        <!-- Trigger the modal with a button -->
+        <span class="col-md-5">&nbsp;</span>
+        <button type="button" class="btn btn-primary btn-md col-md-2 text-white" (click)="openModal(true)">Add IP Address</button>
+    </div>
+    <div>
+        <ngb-alert #selfClosingAlert *ngIf="successMessage" [type]="successType" (closed)="successMessage = ''">{{ successMessage }}
+        </ngb-alert>
+        <table class="table table-striped">
+            <thead>
+                <th>IP Address</th>
+                <th>Labels/Comment</th>
+                <th>Action</th>
+            </thead>
+            <tbody *ngIf="ip_addresses">
+                <tr *ngFor="let ip_address of ip_addresses.data">
+                    <td>{{ ip_address.ip_address }}</td>
+                    <td>
+                        <div *ngIf="ip_address.labels.length">
+                            <ul *ngFor="let label of ip_address.labels">
+                                <li>{{ label }}</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-secondary" (click)="view(ip_address.id)"><i class="fa fa-edit"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

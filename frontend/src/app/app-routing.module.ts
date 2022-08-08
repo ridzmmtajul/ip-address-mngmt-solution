@@ -5,6 +5,7 @@ import { PublicComponent } from './components/public/public.component';
 import { SignupComponent } from './components/public/signup/signup.component';
 import { WelcomeComponent } from './components/public/welcome/welcome.component';
 import { HomeComponent } from './components/home/home.component';
+import { IpAddressComponent } from './components/ip-address/ip-address.component';
 
 const routes: Routes = [
   { 
@@ -20,6 +21,7 @@ const routes: Routes = [
     path: 'home', 
     component: HomeComponent
   },
+  { path: 'ip-address', component: IpAddressComponent},
 ];
 
 @NgModule({

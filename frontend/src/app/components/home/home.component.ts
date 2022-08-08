@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     this.authService.current_user(localStorage.getItem('token')).subscribe(
       (res) => {
         this.user = res;
-        localStorage.setItem('user_id', this.user.id);    
+        localStorage.setItem('user_id', this.user.id);   
       },
       (err) => {
         localStorage.removeItem('token');
@@ -32,6 +32,5 @@ export class HomeComponent implements OnInit {
 
         console.log(err);
       })
-  }
-
+    }
 }
